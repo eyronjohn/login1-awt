@@ -1,13 +1,15 @@
+package src;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-public class Login {
+public class Login{
 
-    //Log In: by Java AWT
-    public static void main(String[] args) {
-
+    Login(){
         //objects instantiation
         Frame frame = new Frame("Log In");
         Label email = new Label("Email");
@@ -48,12 +50,20 @@ public class Login {
         frame.setVisible(true);
         frame.setLocationRelativeTo(null);
 
+        b.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                frame.setVisible(false);
+
+                Dashboard dashboard = new Dashboard();
+                dashboard.display();
+            }
+        });
+
         //allows the program to be terminated
         frame.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
                 System.exit(0);
             }
         });
-
-    }//main
-}//class
+    }
+}
